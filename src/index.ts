@@ -1,14 +1,19 @@
-import { User, NullUser } from "modules/nullObject";
-import UserBuilder, { Address } from "modules/builder";
-import logger from "modules/singleton";
+import { User, NullUser } from "patterns/nullObject";
+import UserBuilder, { Address } from "patterns/builder";
+import logger from "patterns/singleton";
 import Calculator, {
 	AddCommand,
 	SubtractCommand,
 	MultiplyCommand,
 	DivideCommand,
 	AddThenMultiplyCommand,
-} from "modules/command";
-import { getUsers, getUserPosts } from "modules/facade";
+} from "patterns/command";
+import { getUsers, getUserPosts } from "patterns/facade";
+import AreaCalculator, {
+	Circle,
+	Square,
+	SumCalculatorOutputter,
+} from "principles/singleResponsibility";
 
 /**
  * Null Object Pattern
@@ -83,3 +88,15 @@ getUsers().then((users: []) => {
 		});
 	});
 });
+
+/**
+ * Single Responsibility Principle
+ */
+const shapes = [new Circle(2), new Square(5), new Square(6)];
+const areas = new AreaCalculator(shapes);
+const output = new SumCalculatorOutputter(areas);
+console.log(output.toJSON());
+
+/**
+ * Open-Closed Principle
+ */
