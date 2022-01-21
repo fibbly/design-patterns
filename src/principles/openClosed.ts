@@ -55,8 +55,12 @@ class AreaCalculator {
 }
 
 /**
- * Open-Closed Principle
+ * Open-Closed Principle:
+ *
+ * Objects or entities should be open for extension
+ * but closed for modification.
  */
+
 export default function openClosed() {
 	const shapes = [new Circle(2), new Square(5), new Square(6)];
 	const calculator = new AreaCalculator(shapes);

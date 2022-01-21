@@ -6,6 +6,7 @@ import singletonPattern from "patterns/singleton";
 
 import singleResponsibility from "principles/singleResponsibility";
 import openClosed from "principles/openClosed";
+import liskovSubstitution from "principles/liskovSubstitution";
 
 //builderPattern();
 //commandPattern();
@@ -14,4 +15,5 @@ import openClosed from "principles/openClosed";
 //singletonPattern();
 
 //singleResponsibility();
-openClosed();
+//openClosed();
+liskovSubstitution();

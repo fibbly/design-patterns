@@ -54,7 +54,11 @@ class AreaCalculator {
 
 /**
  * Single Responsibility Principle
+ *
+ * A class should have one and only one reason to change,
+ * meaning that a class should have only one job.
  */
+
 export default function singleResponsibility() {
 	const shapes = [new Circle(2), new Square(5), new Square(6)];
 	const areas = new AreaCalculator(shapes);
