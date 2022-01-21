@@ -3,7 +3,7 @@ interface IAddress {
 	street: string;
 }
 
-export class Address implements IAddress {
+class Address implements IAddress {
 	zip;
 	street;
 
@@ -44,7 +44,7 @@ interface IUserBuilder {
 	setAddress: (address: IUserDetails["address"]) => UserBuilder;
 }
 
-export default class UserBuilder implements IUserBuilder {
+class UserBuilder implements IUserBuilder {
 	user: User;
 
 	constructor(username: string) {
@@ -65,4 +65,16 @@ export default class UserBuilder implements IUserBuilder {
 		this.user.address = address;
 		return this;
 	}
+}
+
+/**
+ * Builder Pattern
+ */
+export default function builderPattern() {
+	const user = new UserBuilder("Bob")
+		.setAge(40)
+		.setAddress(new Address(12345, "123 Main St."))
+		.setPhone(1234567890);
+
+	console.log(user);
 }

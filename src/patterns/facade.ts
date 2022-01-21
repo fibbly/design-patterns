@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export function getUsers() {
+function getUsers() {
 	return getFetch("https://jsonplaceholder.typicode.com/users");
 }
 
-export function getUserPosts(userId: string | number) {
+function getUserPosts(userId: string | number) {
 	return getFetch("https://jsonplaceholder.typicode.com/posts", {
 		userId: userId,
 	});
@@ -19,4 +19,22 @@ function getFetch(url: string, params: Record<string, unknown> = {}) {
 			"Content-Type": "application/json",
 		},
 	}).then((res) => res.data);
+}
+
+/**
+ * Facade Pattern
+ */
+type FacadeUser = {
+	id: string | number;
+	name: string;
+};
+
+export default function facadePattern() {
+	getUsers().then((users: []) => {
+		users.forEach((user: FacadeUser) => {
+			getUserPosts(user.id).then((posts: []) => {
+				console.log(`${user.name} has ${posts.length} posts`);
+			});
+		});
+	});
 }

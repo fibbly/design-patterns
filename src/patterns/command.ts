@@ -9,7 +9,7 @@ interface ICalculator {
 	divide: (valueToDivide: number) => void;
 }
 
-export default class Calculator implements ICalculator {
+class Calculator implements ICalculator {
 	value: number;
 	history: ICommand[];
 
@@ -54,7 +54,7 @@ interface IAddCommand extends ICommand {
 	valueToAdd: number;
 }
 
-export class AddCommand implements IAddCommand {
+class AddCommand implements IAddCommand {
 	valueToAdd: number;
 
 	constructor(valueToAdd: number) {
@@ -74,7 +74,7 @@ interface ISubtractCommand extends ICommand {
 	valueToSubtract: number;
 }
 
-export class SubtractCommand implements ISubtractCommand {
+class SubtractCommand implements ISubtractCommand {
 	valueToSubtract: number;
 
 	constructor(valueToSubtract: number) {
@@ -94,7 +94,7 @@ interface IMultiplyCommand extends ICommand {
 	valueToMultiply: number;
 }
 
-export class MultiplyCommand implements IMultiplyCommand {
+class MultiplyCommand implements IMultiplyCommand {
 	valueToMultiply: number;
 
 	constructor(valueToMultiply: number) {
@@ -114,7 +114,7 @@ interface IDivideCommand extends ICommand {
 	valueToDivide: number;
 }
 
-export class DivideCommand implements IDivideCommand {
+class DivideCommand implements IDivideCommand {
 	valueToDivide: number;
 
 	constructor(valueToDivide: number) {
@@ -135,7 +135,7 @@ interface IAddThenMultiplyCommand extends ICommand {
 	multiplyCommand: MultiplyCommand;
 }
 
-export class AddThenMultiplyCommand implements IAddThenMultiplyCommand {
+class AddThenMultiplyCommand implements IAddThenMultiplyCommand {
 	addCommand: AddCommand;
 	multiplyCommand: MultiplyCommand;
 
@@ -153,4 +153,21 @@ export class AddThenMultiplyCommand implements IAddThenMultiplyCommand {
 		const newValue = this.multiplyCommand.undo(currentValue);
 		return this.addCommand.undo(newValue);
 	}
+}
+
+/**
+ * Command Pattern
+ */
+export default function commandPattern() {
+	const calculator = new Calculator();
+	calculator.executeCommand(new AddCommand(10));
+	console.log(calculator.value);
+	calculator.executeCommand(new SubtractCommand(5));
+	console.log(calculator.value);
+	calculator.executeCommand(new MultiplyCommand(10));
+	console.log(calculator.value);
+	calculator.executeCommand(new DivideCommand(2));
+	console.log(calculator.value);
+	calculator.executeCommand(new AddThenMultiplyCommand(2, 2));
+	console.log(calculator.value);
 }

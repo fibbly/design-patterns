@@ -30,8 +30,8 @@ export class SumCalculatorOutputter {
 	}
 }
 
-export default class AreaCalculator {
-	private shapes: (Circle | Square)[];
+class AreaCalculator {
+	public shapes: (Circle | Square)[];
 
 	constructor(shapes: (Circle | Square)[]) {
 		this.shapes = shapes;
@@ -50,4 +50,14 @@ export default class AreaCalculator {
 
 		return areas.reduce((pre: number, curr: number) => pre + curr);
 	}
+}
+
+/**
+ * Single Responsibility Principle
+ */
+export default function singleResponsibility() {
+	const shapes = [new Circle(2), new Square(5), new Square(6)];
+	const areas = new AreaCalculator(shapes);
+	const output = new SumCalculatorOutputter(areas);
+	console.log(output.toJSON());
 }

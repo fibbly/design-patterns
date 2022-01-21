@@ -34,4 +34,14 @@ class Logger implements ILogger {
 
 const logger = Logger.getInstance();
 Object.freeze(logger);
-export default logger;
+
+/**
+ * Singleton Pattern
+ */
+export default function singletonPattern() {
+	logger.printLogCount();
+	logger.log("First File");
+	logger.printLogCount();
+	logger.log("Second File");
+	logger.printLogCount();
+}
