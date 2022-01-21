@@ -1,3 +1,16 @@
+import { AreaCalculator, Shape } from "./openClosed";
+
+class VolumeCalculator extends AreaCalculator {
+	constructor(shapes: Shape[]) {
+		super(shapes);
+	}
+
+	public sum(): number {
+		// calculate volume of shapes
+		return 0;
+	}
+}
+
 /**
  * Liskov Substitution Principle
  *
@@ -6,5 +19,5 @@
  */
 
 export default function () {
-	console.log("hi");
+	console.log("Liskov Substitution Principle");
 }

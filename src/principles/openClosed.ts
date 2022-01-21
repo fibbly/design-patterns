@@ -4,7 +4,7 @@ import {
 	SumCalculatorOutputter,
 } from "./singleResponsibility";
 
-interface IShape {
+export interface IShape {
 	area: () => number;
 }
 
@@ -28,13 +28,13 @@ class Circle extends CircleBase implements IShape {
 	}
 }
 
-type Shape = Circle | Square;
+export type Shape = Circle | Square;
 
 function isShape(obj: any): obj is IShape {
 	return "area" in obj;
 }
 
-class AreaCalculator {
+export class AreaCalculator {
 	public shapes: Shape[];
 
 	constructor(shapes: Shape[]) {
