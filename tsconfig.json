@@ -13,7 +13,7 @@
     "sourceMap": true,
     "baseUrl": "src",
     "paths": {
-      "@modules/*": ["src/modules/*"]
+      "@modules/*": ["src/patterns/*"]
     }                   
   },
   "include": [
